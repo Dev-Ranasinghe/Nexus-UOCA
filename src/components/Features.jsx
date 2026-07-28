@@ -116,7 +116,7 @@ export const BentoCard = ({
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             className={clsx(
-              "border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full px-5 py-2 text-xs uppercase",
+              "border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full px-3 py-1 text-[10px] uppercase sm:px-5 sm:py-2 sm:text-xs",
               dark ? "bg-black/10 text-black/40" : "bg-black text-white/20",
             )}
           >
@@ -128,7 +128,7 @@ export const BentoCard = ({
                 background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #656fe288, #00000026)`,
               }}
             />
-            <TiLocationArrow className="relative z-20" />
+            <TiLocationArrow className="relative z-20 text-[10px] sm:text-base" />
             <p className="relative z-20">coming soon</p>
           </div>
         )}
@@ -140,7 +140,7 @@ export const BentoCard = ({
 const Features = () => (
   <section className="bg-black pb-32">
     <div className="container mx-auto px-3 md:px-10">
-      <div className="px-5 py-32">
+      <div className="px-5 pb-32 pt-10">
         <p className="font-circular-web text-lg text-blue-50">
           Two Games. One Cause.
         </p>

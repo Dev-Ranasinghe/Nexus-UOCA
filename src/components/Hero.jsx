@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 
 import Button from "./Button";
 import VideoPreview from "./VideoPreview";
+import Loader from "./Loader";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,6 +17,7 @@ const Hero = () => {
 
   const [loading, setLoading] = useState(true);
   const [loadedVideos, setLoadedVideos] = useState(0);
+  const [minTimeElapsed, setMinTimeElapsed] = useState(false);
 
   const totalVideos = 4;
   const nextVdRef = useRef(null);
@@ -24,11 +26,18 @@ const Hero = () => {
     setLoadedVideos((prev) => prev + 1);
   };
 
+  // Guarantees the loader is visible for one full animation cycle on every
+  // refresh, instead of flashing by instantly when videos load from cache.
   useEffect(() => {
-    if (loadedVideos === totalVideos - 1) {
+    const timer = setTimeout(() => setMinTimeElapsed(true), 3500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (loadedVideos === totalVideos - 1 && minTimeElapsed) {
       setLoading(false);
     }
-  }, [loadedVideos]);
+  }, [loadedVideos, minTimeElapsed]);
 
   const handleMiniVdClick = () => {
     setHasClicked(true);
@@ -115,12 +124,9 @@ const Hero = () => {
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden">
       {loading && (
-        <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
-          {/* https://uiverse.io/G4b413l/tidy-walrus-92 */}
-          <div className="three-body">
-            <div className="three-body__dot"></div>
-            <div className="three-body__dot"></div>
-            <div className="three-body__dot"></div>
+        <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-black">
+          <div className="relative size-64">
+            <Loader />
           </div>
         </div>
       )}
