@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 
 import Button from "./Button";
 import VideoPreview from "./VideoPreview";
-import Loader from "./Loader";
+import { Component as Loader } from "./ui/loader-2";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -125,7 +125,10 @@ const Hero = () => {
     <div className="relative h-dvh w-screen overflow-x-hidden">
       {loading && (
         <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-black">
-          <div className="relative size-64">
+          <div
+            className="flex items-center justify-center gap-6"
+            style={{ "--clr": "#fff" }}
+          >
             <Loader />
           </div>
         </div>
