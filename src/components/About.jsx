@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
@@ -143,14 +142,15 @@ const About = () => {
 
           <div className="about-overlay-dim absolute inset-0 bg-black/60" />
 
-          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 px-6 text-center sm:gap-6">
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 px-4 text-center sm:gap-6 sm:px-6">
             {revealLines.map((line, lineIndex) => (
               <p
                 key={lineIndex}
-                className={clsx(
-                  "special-font whitespace-nowrap font-zentry text-lg font-black uppercase text-white sm:text-3xl md:text-4xl",
-                  !line.emphasis && "text-blue-50",
-                )}
+                className="special-font max-w-xs font-zentry text-3xl font-black uppercase sm:max-w-none sm:whitespace-nowrap sm:text-3xl md:text-5xl lg:text-6xl"
+                style={{
+                  WebkitTextStroke: "1.5px white",
+                  color: "transparent",
+                }}
               >
                 {line.text.split(" ").map((word, wordIndex) => (
                   <span
@@ -161,7 +161,6 @@ const About = () => {
                       transformStyle: "preserve-3d",
                       backfaceVisibility: "hidden",
                       willChange: "filter, transform, opacity",
-                      textShadow: "0 0 40px rgba(255,255,255,0.4)",
                     }}
                   >
                     {word}{" "}
@@ -178,7 +177,7 @@ const About = () => {
           {[0, 1, 2, 3, 4, 5, 6, 7].map((idx) => (
             <p
               key={idx}
-              className="special-font whitespace-nowrap font-zentry text-6xl font-black uppercase tracking-[0.2em] text-white sm:text-8xl"
+              className="special-font whitespace-nowrap font-zentry text-7xl font-black uppercase tracking-normal text-white sm:text-9xl"
             >
               Passion Meets Purpose
             </p>

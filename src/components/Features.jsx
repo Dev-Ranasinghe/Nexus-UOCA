@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import clsx from "clsx";
 import { TiLocationArrow } from "react-icons/ti";
 
@@ -52,6 +52,29 @@ export const BentoCard = ({
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [hoverOpacity, setHoverOpacity] = useState(0);
   const hoverButtonRef = useRef(null);
+  const videoRef = useRef(null);
+
+  // Only decode/play this video while its card is actually on screen, so
+  // scrolling past several autoplaying videos at once (mainly costly on
+  // mobile) doesn't bog down the browser.
+  useEffect(() => {
+    const videoEl = videoRef.current;
+    if (!videoEl) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          videoEl.play().catch(() => {});
+        } else {
+          videoEl.pause();
+        }
+      },
+      { rootMargin: "100px", threshold: 0.15 },
+    );
+
+    observer.observe(videoEl);
+    return () => observer.disconnect();
+  }, [src]);
 
   const handleMouseMove = (event) => {
     if (!hoverButtonRef.current) return;
@@ -76,10 +99,12 @@ export const BentoCard = ({
     >
       {src && (
         <video
+          ref={videoRef}
           src={src}
           loop
           muted
-          autoPlay
+          playsInline
+          preload="metadata"
           className="absolute left-0 top-0 size-full object-cover object-center"
         />
       )}
