@@ -1,4 +1,5 @@
 import gsap from "gsap";
+import clsx from "clsx";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import { TiLocationArrow } from "react-icons/ti";
@@ -33,6 +34,29 @@ const Hero = () => {
     setHasClicked(true);
 
     setCurrentIndex((prevIndex) => (prevIndex % totalVideos) + 1);
+  };
+
+  const goToVideo = (index) => {
+    const nextIndex = (((index - 1) % totalVideos) + totalVideos) % totalVideos + 1;
+
+    if (nextIndex === currentIndex) return;
+
+    setHasClicked(true);
+    setCurrentIndex(nextIndex);
+  };
+
+  const touchStartX = useRef(0);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+
+    if (Math.abs(deltaX) < 40) return;
+
+    goToVideo(deltaX < 0 ? currentIndex + 1 : currentIndex - 1);
   };
 
   useGSAP(
@@ -80,7 +104,13 @@ const Hero = () => {
     });
   });
 
-  const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
+  const heroVideos = [
+    "videos/giphy360p.mp4",
+    "videos/giphy360p (1).mp4",
+    "videos/giphy360p (2).mp4",
+    "videos/giphy480p.mp4",
+  ];
+  const getVideoSrc = (index) => encodeURI(heroVideos[index - 1]);
 
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden">
@@ -97,10 +127,12 @@ const Hero = () => {
 
       <div
         id="video-frame"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
         className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
       >
         <div>
-          <div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
+          <div className="mask-clip-path absolute-center absolute z-50 hidden size-64 cursor-pointer overflow-hidden rounded-lg md:block">
             <VideoPreview>
               <div
                 onClick={handleMiniVdClick}
@@ -140,32 +172,53 @@ const Hero = () => {
           />
         </div>
 
-        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75">
-          G<b>A</b>MING
+        <div className="absolute inset-x-0 bottom-24 z-50 flex justify-center gap-3 md:hidden">
+          {heroVideos.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => goToVideo(idx + 1)}
+              aria-label={`Show video ${idx + 1}`}
+              className={clsx(
+                "h-2 rounded-full transition-all duration-300",
+                currentIndex === idx + 1 ? "w-6 bg-yellow-300" : "w-2 bg-white/40"
+              )}
+            />
+          ))}
+        </div>
+
+        <h1 className="special-font hero-heading pointer-events-none absolute bottom-5 right-5 z-40 text-right !text-4xl sm:!text-6xl md:!text-7xl lg:!text-7xl leading-[0.85] text-blue-75">
+          esp<b>o</b>rts <br /> tourna<b>m</b>ent
         </h1>
 
-        <div className="absolute left-0 top-0 z-40 size-full">
-          <div className="mt-24 px-5 sm:px-10">
+        <div className="pointer-events-none absolute left-0 top-0 z-40 size-full">
+          <div className="pointer-events-auto mt-24 px-5 sm:px-10">
             <h1 className="special-font hero-heading text-blue-100">
-              redefi<b>n</b>e
+              ne<b>x</b>us
             </h1>
 
-            <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
-              Enter the Metagame Layer <br /> Unleash the Play Economy
+            <p className="my-4 whitespace-nowrap font-general text-sm uppercase tracking-wide text-blue-100">
+              A project by LEO Club UOC Alumni
             </p>
 
-            <Button
-              id="watch-trailer"
-              title="Watch trailer"
-              leftIcon={<TiLocationArrow />}
-              containerClass="bg-yellow-300 flex-center gap-1"
-            />
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSck-1Jp0XFg0dI_cJ2RCS_pKBD5AdeGLvqFIWQV3m-pxUDI6g/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-block"
+            >
+              <Button
+                id="watch-trailer"
+                title="Register"
+                leftIcon={<TiLocationArrow />}
+                containerClass="bg-yellow-300 flex-center gap-1 !px-8 !py-4 ring-2 ring-yellow-100/50 cta-standout"
+              />
+            </a>
           </div>
         </div>
       </div>
 
-      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
-        G<b>A</b>MING
+      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-right !text-4xl sm:!text-6xl md:!text-7xl lg:!text-7xl leading-[0.85] text-black">
+        esp<b>o</b>rts <br /> tourna<b>m</b>ent
       </h1>
     </div>
   );

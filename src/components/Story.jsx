@@ -47,15 +47,11 @@ const FloatingImage = () => {
 
   return (
     <div id="story" className="min-h-dvh w-screen bg-black text-blue-50">
-      <div className="flex size-full flex-col items-center py-10 pb-24">
-        <p className="font-general text-sm uppercase md:text-[10px]">
-          the multiversal ip world
-        </p>
-
+      <div className="flex size-full flex-col items-center pt-4 pb-24">
         <div className="relative size-full">
           <AnimatedTitle
-            title="the st<b>o</b>ry of <br /> a hidden real<b>m</b>"
-            containerClass="mt-5 pointer-events-none mix-blend-difference relative z-10"
+            title="the <b>u</b>ltimate <br /> b<b>a</b>ttlefield <br /> aw<b>a</b>its"
+            containerClass="mt-2 pointer-events-none mix-blend-difference relative z-10"
           />
 
           <div className="story-img-container">
@@ -67,8 +63,8 @@ const FloatingImage = () => {
                   onMouseLeave={handleMouseLeave}
                   onMouseUp={handleMouseLeave}
                   onMouseEnter={handleMouseLeave}
-                  src="/img/entrance.webp"
-                  alt="entrance.webp"
+                  src="/img/wp8723136-valorant-agents-wallpapers.png"
+                  alt="valorant agents"
                   className="object-contain"
                 />
               </div>
@@ -106,16 +102,22 @@ const FloatingImage = () => {
         <div className="-mt-80 flex w-full justify-center md:-mt-64 md:me-44 md:justify-end">
           <div className="flex h-full w-fit flex-col items-center md:items-start">
             <p className="mt-3 max-w-sm text-center font-circular-web text-violet-50 md:text-start">
-              Where realms converge, lies Zentry and the boundless pillar.
-              Discover its secrets and shape your fate amidst infinite
-              opportunities.
+              Where Sri Lanka's best Valorant and PUBG players collide in one
+              tournament. Build your squad, conquer the competition, and earn
+              your place among the champions.
             </p>
 
-            <Button
-              id="realm-btn"
-              title="discover prologue"
-              containerClass="mt-5"
-            />
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSck-1Jp0XFg0dI_cJ2RCS_pKBD5AdeGLvqFIWQV3m-pxUDI6g/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                id="realm-btn"
+                title="enter nexus"
+                containerClass="mt-5"
+              />
+            </a>
           </div>
         </div>
       </div>

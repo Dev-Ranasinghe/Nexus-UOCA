@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import clsx from "clsx";
 import { TiLocationArrow } from "react-icons/ti";
 
 export const BentoTilt = ({ children, className = "" }) => {
@@ -38,7 +39,16 @@ export const BentoTilt = ({ children, className = "" }) => {
   );
 };
 
-export const BentoCard = ({ src, title, description, isComingSoon }) => {
+export const BentoCard = ({
+  src,
+  title,
+  label,
+  description,
+  isComingSoon,
+  bgClassName,
+  dark,
+  fitContent,
+}) => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [hoverOpacity, setHoverOpacity] = useState(0);
   const hoverButtonRef = useRef(null);
@@ -57,17 +67,43 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
   const handleMouseLeave = () => setHoverOpacity(0);
 
   return (
-    <div className="relative size-full">
-      <video
-        src={src}
-        loop
-        muted
-        autoPlay
-        className="absolute left-0 top-0 size-full object-cover object-center"
-      />
-      <div className="relative z-10 flex size-full flex-col justify-between p-5 text-blue-50">
+    <div
+      className={clsx(
+        "relative w-full",
+        fitContent ? "h-48 sm:h-full sm:size-full" : "size-full",
+        bgClassName,
+      )}
+    >
+      {src && (
+        <video
+          src={src}
+          loop
+          muted
+          autoPlay
+          className="absolute left-0 top-0 size-full object-cover object-center"
+        />
+      )}
+      <div
+        className={clsx(
+          "relative z-10 flex w-full flex-col p-5",
+          fitContent
+            ? "gap-6 sm:size-full sm:justify-between sm:gap-0"
+            : "size-full justify-between",
+          dark ? "text-black" : "text-blue-50",
+        )}
+      >
         <div>
-          <h1 className="bento-title special-font">{title}</h1>
+          {label && (
+            <p
+              className={clsx(
+                "mb-2 text-sm uppercase tracking-wider",
+                dark ? "text-black/50" : "text-white/50",
+              )}
+            >
+              {label}
+            </p>
+          )}
+          <h1 className="bento-title special-font max-w-64">{title}</h1>
           {description && (
             <p className="mt-3 max-w-64 text-xs md:text-base">{description}</p>
           )}
@@ -79,7 +115,10 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
             onMouseMove={handleMouseMove}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-xs uppercase text-white/20"
+            className={clsx(
+              "border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full px-5 py-2 text-xs uppercase",
+              dark ? "bg-black/10 text-black/40" : "bg-black text-white/20",
+            )}
           >
             {/* Radial gradient hover effect */}
             <div
@@ -99,90 +138,87 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
 };
 
 const Features = () => (
-  <section className="bg-black pb-52">
+  <section className="bg-black pb-32">
     <div className="container mx-auto px-3 md:px-10">
       <div className="px-5 py-32">
         <p className="font-circular-web text-lg text-blue-50">
-          Into the Metagame Layer
+          Two Games. One Cause.
         </p>
         <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-50">
-          Immerse yourself in a rich and ever-expanding universe where a vibrant
-          array of products converge into an interconnected overlay experience
-          on your world.
+          Two games. One arena. Infinite competition. Join the ultimate
+          Valorant and PUBG showdown, proudly presented by the Leo Club of
+          UOCA.
         </p>
       </div>
 
       <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
         <BentoCard
           src="videos/feature-1.mp4"
-          title={
-            <>
-              radia<b>n</b>t
-            </>
-          }
-          description="A cross-platform metagame app, turning your activities across Web2 and Web3 games into a rewarding adventure."
+          title="The Tournament"
+          description="Everything you need to know."
           isComingSoon
         />
       </BentoTilt>
 
-      <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
-        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
+      <div className="grid h-[95vh] w-full grid-cols-2 grid-rows-[1fr_1fr_auto] gap-7 sm:h-[135vh] sm:grid-rows-3">
+        <BentoTilt className="bento-tilt_2">
           <BentoCard
             src="videos/feature-2.mp4"
-            title={
-              <>
-                zig<b>m</b>a
-              </>
-            }
-            description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
+            label="Featured Game"
+            title="Valorant"
             isComingSoon
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
+        <BentoTilt className="bento-tilt_2">
           <BentoCard
             src="videos/feature-3.mp4"
-            title={
-              <>
-                n<b>e</b>xus
-              </>
-            }
-            description="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
+            label="Featured Game"
+            title="PUBG Mobile"
             isComingSoon
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
+        <BentoTilt className="bento-tilt_2">
           <BentoCard
             src="videos/feature-4.mp4"
-            title={
-              <>
-                az<b>u</b>l
-              </>
-            }
-            description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
+            title="Tournament Format"
             isComingSoon
           />
         </BentoTilt>
 
         <BentoTilt className="bento-tilt_2">
-          <div className="flex size-full flex-col justify-between bg-violet-300 p-5">
-            <h1 className="bento-title special-font max-w-64 text-black">
-              M<b>o</b>re co<b>m</b>ing s<b>o</b>on.
-            </h1>
-
-            <TiLocationArrow className="m-5 scale-[5] self-end" />
-          </div>
+          <BentoCard
+            src="videos/feature-5.mp4"
+            title="Prize Pool"
+            isComingSoon
+          />
         </BentoTilt>
 
         <BentoTilt className="bento-tilt_2">
-          <video
-            src="videos/feature-5.mp4"
-            loop
-            muted
-            autoPlay
-            className="size-full object-cover object-center"
+          <BentoCard
+            title="Our Partners"
+            bgClassName="bg-violet-300"
+            dark
+            isComingSoon
+            fitContent
           />
+        </BentoTilt>
+
+        <BentoTilt className="bento-tilt_2">
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSck-1Jp0XFg0dI_cJ2RCS_pKBD5AdeGLvqFIWQV3m-pxUDI6g/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block h-full w-full"
+          >
+            <BentoCard
+              title="Register Now"
+              bgClassName="bg-violet-300"
+              dark
+              fitContent
+            />
+          </a>
         </BentoTilt>
       </div>
     </div>
