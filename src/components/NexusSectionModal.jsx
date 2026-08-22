@@ -58,7 +58,6 @@ export default function NexusSectionModal({ isOpen, onClose, activeTab, setActiv
     { id: "valorant", mobileLabel: "Valorant", desktopLabel: "Valorant" },
     { id: "pubg", mobileLabel: "PUBG Mobile", desktopLabel: "PUBG Mobile" },
     { id: "format", mobileLabel: "Format", desktopLabel: "Tournament Format" },
-    { id: "prizepool", mobileLabel: "Prize Pool", desktopLabel: "Prize Pool" },
   ];
 
   return (
@@ -194,7 +193,7 @@ export default function NexusSectionModal({ isOpen, onClose, activeTab, setActiv
                       PROJECT DIYAWARA
                     </h2>
                     <p className="text-xs sm:text-sm text-gray-300 leading-relaxed font-circular-web">
-                      This isn't just about the prize pool—it's about saving lives. Rural communities in Sri Lanka's dry zones, specifically <strong>Anuradhapura and Polonnaruwa</strong>, face severe hardships due to limited access to clean, safe drinking water.
+                      This isn't just about the competition—it's about saving lives. Rural communities in Sri Lanka's dry zones, specifically <strong>Anuradhapura and Polonnaruwa</strong>, face severe hardships due to limited access to clean, safe drinking water.
                     </p>
                     <p className="text-xs sm:text-sm text-gray-400 leading-relaxed mt-2 sm:mt-3 font-circular-web">
                       <strong>100% of net profits</strong> from NEXUS registration fees directly finance Project Diyawara. By entering the lobby, you are funding clean water system upgrades, vital well rehabilitation, filtration installations, and hygiene education workshops.
@@ -278,8 +277,8 @@ export default function NexusSectionModal({ isOpen, onClose, activeTab, setActiv
                     </p>
                   </div>
                   <div className="w-full sm:w-auto flex items-center justify-between sm:flex-col sm:items-end p-2.5 sm:p-4 rounded-lg bg-red-950/40 border border-red-500/30 shrink-0">
-                    <span className="text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-widest block">Prize Pool</span>
-                    <span className="font-zentry text-xl sm:text-3xl font-bold text-red-400">LKR 35,000</span>
+                    <span className="text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-widest block">Community Event</span>
+                    <span className="font-zentry text-xl sm:text-3xl font-bold text-red-400">Open to All</span>
                   </div>
                 </div>
               </div>
@@ -346,7 +345,7 @@ export default function NexusSectionModal({ isOpen, onClose, activeTab, setActiv
                   </h3>
                   <ul className="text-xs text-gray-300 space-y-1 sm:space-y-2 font-circular-web">
                     <li><strong className="text-white">Vanguard:</strong> Must be running. Vanguard ban = instant team DQ.</li>
-                    <li><strong className="text-white">Zero Tolerance:</strong> Hacking, bug exploits, or prize collusion prohibited.</li>
+                    <li><strong className="text-white">Zero Tolerance:</strong> Hacking, bug exploits, or collusion prohibited.</li>
                     <li><strong className="text-white">Conduct:</strong> Toxicity or harassment leads to immediate ban.</li>
                   </ul>
                 </div>
@@ -413,8 +412,8 @@ export default function NexusSectionModal({ isOpen, onClose, activeTab, setActiv
                     </p>
                   </div>
                   <div className="w-full sm:w-auto flex items-center justify-between sm:flex-col sm:items-end p-2.5 sm:p-4 rounded-lg bg-sky-950/40 border border-sky-500/30 shrink-0">
-                    <span className="text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-widest block">Prize Pool</span>
-                    <span className="font-zentry text-xl sm:text-3xl font-bold text-sky-400">LKR 40,000</span>
+                    <span className="text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-widest block">Community Event</span>
+                    <span className="font-zentry text-xl sm:text-3xl font-bold text-sky-400">Open to All</span>
                   </div>
                 </div>
               </div>
@@ -472,7 +471,7 @@ export default function NexusSectionModal({ isOpen, onClose, activeTab, setActiv
 
                 <div className="p-3.5 sm:p-5 rounded-lg sm:rounded-xl bg-black/60 border border-white/10 hover:border-sky-400/50 transition-colors">
                   <h3 className="font-zentry text-sm sm:text-xl font-bold text-sky-400 uppercase mb-2 sm:mb-3 pb-1.5 sm:pb-2 border-b border-white/10">
-                    4. Prize Distribution
+                    4. Match Results
                   </h3>
                   <ul className="text-xs text-gray-300 space-y-1 sm:space-y-2 font-circular-web">
                     <li><strong className="text-white">1st Place:</strong> Winner Winner Chicken Dinner (#1 Survival).</li>
@@ -487,7 +486,7 @@ export default function NexusSectionModal({ isOpen, onClose, activeTab, setActiv
                   </h3>
                   <ul className="text-xs text-gray-300 space-y-1 sm:space-y-2 font-circular-web">
                     <li><strong className="text-white">Lobby:</strong> Credentials distributed via Discord.</li>
-                    <li><strong className="text-white">Proof Required:</strong> 1st, 2nd, and Most Kills MUST upload final result screenshot to Discord to claim prize.</li>
+                    <li><strong className="text-white">Proof Required:</strong> Final result screenshot must be uploaded for verification and recordkeeping.</li>
                   </ul>
                 </div>
 
@@ -627,111 +626,6 @@ export default function NexusSectionModal({ isOpen, onClose, activeTab, setActiv
                 <div className="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-sky-950/30 border border-sky-500/20 text-xs text-sky-200 font-bold space-y-1">
                   <p>NO POINT SYSTEM TABLE • Survival Placement + Elimination Count in Single Drop dictates Champions.</p>
                 </div>
-              </div>
-            </div>
-          )}
-
-          {/* TAB 5: PRIZE POOL */}
-          {activeTab === "prizepool" && (
-            <div className="space-y-4 sm:space-y-6">
-              {/* Header */}
-              <div className="text-center p-3.5 sm:p-6 md:p-8 rounded-lg sm:rounded-2xl bg-gradient-to-b from-yellow-950/40 via-black to-black border border-yellow-500/30 space-y-2 sm:space-y-3">
-                <span className="inline-block px-2.5 py-0.5 sm:px-4 sm:py-1 rounded-full bg-yellow-400/10 border border-yellow-400/40 text-yellow-400 text-[9px] sm:text-xs font-bold uppercase tracking-widest">
-                  CHAMPIONSHIP STAKES
-                </span>
-                <h1 className="font-zentry text-2xl sm:text-5xl md:text-6xl font-black uppercase text-white tracking-wide">
-                  PRIZE POOL BREAKDOWN
-                </h1>
-                <p className="text-xs sm:text-sm text-gray-300 font-circular-web max-w-2xl mx-auto leading-relaxed">
-                  High-stakes competition meets social impact. Compete for ultimate glory while driving <strong>Project Diyawara</strong> clean water initiatives forward.
-                </p>
-                <div className="inline-block mt-1 sm:mt-2 px-3 py-1.5 sm:px-6 sm:py-2 rounded-lg sm:rounded-xl bg-yellow-500/20 border border-yellow-500/40 text-yellow-300 font-zentry text-base sm:text-2xl font-bold">
-                  TOTAL CHAMPIONSHIP POOL: LKR 75,000
-                </div>
-              </div>
-
-              {/* 2 Game Prize Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-6">
-                
-                {/* Valorant Prize Card */}
-                <div className="p-3.5 sm:p-6 md:p-8 rounded-lg sm:rounded-2xl bg-gradient-to-br from-red-950/30 to-black border border-red-500/40 hover:border-red-400 transition-all space-y-3 sm:space-y-6">
-                  <div className="flex items-center justify-between gap-2 border-b border-white/10 pb-2.5 sm:pb-4">
-                    <div>
-                      <span className="text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-widest block">PC 5v5 Bracket</span>
-                      <h2 className="font-zentry text-xl sm:text-3xl md:text-4xl font-black text-red-500 uppercase">VALORANT</h2>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-widest block">Total Pool</span>
-                      <span className="font-zentry text-lg sm:text-3xl font-bold text-red-400">LKR 35,000</span>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2 sm:space-y-3">
-                    <div className="p-2.5 sm:p-4 rounded-lg sm:rounded-xl bg-white/[0.03] border-l-4 border-l-red-500 border border-white/10 flex items-center justify-between gap-2">
-                      <div>
-                        <span className="text-[8px] sm:text-[10px] text-red-400 font-bold uppercase tracking-wider block">1ST PLACE REWARD</span>
-                        <span className="font-zentry text-sm sm:text-xl font-bold text-white">Champion Prize</span>
-                      </div>
-                      <span className="font-zentry text-lg sm:text-3xl font-bold text-red-400 shrink-0">LKR 25,000</span>
-                    </div>
-
-                    <div className="p-2.5 sm:p-4 rounded-lg sm:rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-between gap-2">
-                      <div>
-                        <span className="text-[8px] sm:text-[10px] text-gray-400 font-bold uppercase tracking-wider block">2ND PLACE REWARD</span>
-                        <span className="font-zentry text-sm sm:text-xl font-bold text-white">Runner-Up Prize</span>
-                      </div>
-                      <span className="font-zentry text-lg sm:text-3xl font-bold text-white shrink-0">LKR 10,000</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* PUBG Mobile Prize Card */}
-                <div className="p-3.5 sm:p-6 md:p-8 rounded-lg sm:rounded-2xl bg-gradient-to-br from-sky-950/30 to-black border border-sky-500/40 hover:border-sky-400 transition-all space-y-3 sm:space-y-6">
-                  <div className="flex items-center justify-between gap-2 border-b border-white/10 pb-2.5 sm:pb-4">
-                    <div>
-                      <span className="text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-widest block">Mobile Duo BR</span>
-                      <h2 className="font-zentry text-xl sm:text-3xl md:text-4xl font-black text-sky-400 uppercase">PUBG MOBILE</h2>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-widest block">Total Pool</span>
-                      <span className="font-zentry text-lg sm:text-3xl font-bold text-sky-400">LKR 40,000</span>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2 sm:space-y-3">
-                    <div className="p-2.5 sm:p-4 rounded-lg sm:rounded-xl bg-white/[0.03] border-l-4 border-l-sky-400 border border-white/10 flex items-center justify-between gap-2">
-                      <div>
-                        <span className="text-[8px] sm:text-[10px] text-sky-400 font-bold uppercase tracking-wider block">1ST PLACE REWARD</span>
-                        <span className="font-zentry text-sm sm:text-xl font-bold text-white">Chicken Dinner (#1)</span>
-                      </div>
-                      <span className="font-zentry text-lg sm:text-3xl font-bold text-sky-400 shrink-0">LKR 20,000</span>
-                    </div>
-
-                    <div className="p-2.5 sm:p-4 rounded-lg sm:rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-between gap-2">
-                      <div>
-                        <span className="text-[8px] sm:text-[10px] text-gray-400 font-bold uppercase tracking-wider block">2ND PLACE REWARD</span>
-                        <span className="font-zentry text-sm sm:text-xl font-bold text-white">Runner-Up Prize</span>
-                      </div>
-                      <span className="font-zentry text-lg sm:text-3xl font-bold text-white shrink-0">LKR 10,000</span>
-                    </div>
-
-                    <div className="p-2.5 sm:p-4 rounded-lg sm:rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-between gap-2">
-                      <div>
-                        <span className="text-[8px] sm:text-[10px] text-gray-400 font-bold uppercase tracking-wider block">SPECIAL AWARD</span>
-                        <span className="font-zentry text-sm sm:text-xl font-bold text-white">Most Kills Duo</span>
-                      </div>
-                      <span className="font-zentry text-lg sm:text-3xl font-bold text-white shrink-0">LKR 10,000</span>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-              {/* Bottom Quote Banner */}
-              <div className="p-3.5 sm:p-6 rounded-lg sm:rounded-2xl bg-black/60 border border-white/10 text-center">
-                <p className="font-zentry text-sm sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-white to-yellow-300 uppercase leading-snug">
-                  WHERE PRESSURE CREATES CHAMPIONS. AND WHERE YOUR LEGACY BEGINS.
-                </p>
               </div>
             </div>
           )}

@@ -216,7 +216,7 @@ const Features = () => {
               src="videos/feature-2.mp4"
               label="Featured PC Game"
               title="Valorant"
-              description="5v5 Tactical • LKR 35,000 Pool"
+              description="5v5 Tactical • Community showdown"
               buttonText="VIEW RULES"
               onClick={() => openSectionModal("valorant")}
             />
@@ -231,7 +231,7 @@ const Features = () => {
               src="videos/feature-3.mp4"
               label="Featured Mobile Game"
               title="PUBG Mobile"
-              description="Duo BR • LKR 40,000 Pool"
+              description="Duo BR • Community showdown"
               buttonText="VIEW RULES"
               onClick={() => openSectionModal("pubg")}
             />
@@ -251,21 +251,7 @@ const Features = () => {
             />
           </BentoTilt>
 
-          {/* Card 5: Prize Pool */}
-          <BentoTilt
-            onClick={() => openSectionModal("prizepool")}
-            className="bento-tilt_2"
-          >
-            <BentoCard
-              src="videos/feature-5.mp4"
-              title="Prize Pool"
-              description="LKR 75,000 Championship Pool"
-              buttonText="VIEW STAKES"
-              onClick={() => openSectionModal("prizepool")}
-            />
-          </BentoTilt>
-
-          {/* Card 6: Our Partners */}
+          {/* Card 5: Our Partners */}
           <BentoTilt className="bento-tilt_2">
             <BentoCard
               title="Our Partners"
